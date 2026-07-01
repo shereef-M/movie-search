@@ -1,0 +1,152 @@
+/* ---- RESET & VARIABLES ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2f2f2f;
+  --text: #111111;
+  --light: #f6f6f6;
+  --gold: #ffcb74;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---- CONTAINER ---- */
+.container {
+  background-color: var(--primary);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- HEADING ---- */
+h1 {
+  color: var(--light);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* ---- INPUT SECTION ---- */
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--light);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+#taskInput:focus {
+  box-shadow: 0 0 0 3px var(--gold);
+}
+
+#addBtn {
+  padding: 12px 24px;
+  background-color: var(--gold);
+  color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+#addBtn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* ---- TASK LIST ---- */
+#taskList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--light);
+  padding: 14px 16px;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.task-item.completed {
+  opacity: 0.5;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--gold);
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 0 4px;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ---- COUNTER ---- */
+.counter {
+  display: flex;
+  justify-content: space-between;
+  color: var(--light);
+  font-size: 0.85rem;
+  opacity: 0.7;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
