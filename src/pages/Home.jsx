@@ -1,13 +1,15 @@
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
-import MovieCard from '../components/MovieCard';
+import MovieCard from "../components/MovieCard";
 
 function Home() {
   // State variables
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [favourites, setFavourites] = useState(() => {
+    return JSON.parse(localStorage.getItem("favourites")) || [];
+  });
   // Search function
   async function searchMovies() {
     setLoading(true);
@@ -27,6 +29,20 @@ function Home() {
       setLoading(false);
     }
   }
+  function addToFavourites(movie) {
+    // Check if movie is already in favourites
+    const alreadyAdded = favourites.find((fav) => fav.imdbID === movie.imdbID);
+
+    if (alreadyAdded) {
+      alert("Movie already in favourites!");
+      return;
+    }
+
+    // Add movie to favourites
+    const updatedFavourites = [...favourites, movie];
+    setFavourites(updatedFavourites);
+    localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
+  }
 
   return (
     <div>
@@ -37,10 +53,15 @@ function Home() {
       {loading && <p>Loading...</p>}
 
       {!loading &&
-        movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)}
+        movies.map((movie) => (
+          <MovieCard
+            key={movie.imdbID}
+            movie={movie}
+            onAddFavourite={addToFavourites}
+          />
+        ))}
     </div>
   );
 }
 
 export default Home;
-
