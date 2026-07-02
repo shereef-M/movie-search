@@ -27,7 +27,7 @@ function MovieDetail() {
   if (!movie) return <p>Movie not found.</p>;
 
   return (
-    <div>
+    <div className="movie-detail">
       <img src={movie.Poster} alt={movie.Title} width="300" />
       <h1>{movie.Title}</h1>
       <p>

@@ -45,21 +45,22 @@ function Home() {
   }
 
   return (
-    <div>
+    <div className="page">
       <h1>Movie Search</h1>
 
       <SearchBar query={query} setQuery={setQuery} onSearch={searchMovies} />
+      <div className="movies-grid">
+        {loading && <p>Loading...</p>}
 
-      {loading && <p>Loading...</p>}
-
-      {!loading &&
-        movies.map((movie) => (
-          <MovieCard
-            key={movie.imdbID}
-            movie={movie}
-            onAddFavourite={addToFavourites}
-          />
-        ))}
+        {!loading &&
+          movies.map((movie) => (
+            <MovieCard
+              key={movie.imdbID}
+              movie={movie}
+              onAddFavourite={addToFavourites}
+            />
+          ))}
+      </div>
     </div>
   );
 }

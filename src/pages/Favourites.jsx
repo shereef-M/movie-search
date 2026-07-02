@@ -15,18 +15,20 @@ const Favourites = () => {
   return (
     <div className="page">
       <h2>My Favourites</h2>
-      {favourites.length === 0 ? (
-        <p>No favourites yet. Start adding some!</p>
-      ) : (
-        favourites.map((movie) => (
-          <MovieCard
-            key={movie.imdbID}
-            movie={movie}
-            onAddFavourite={removeFromFavourites}
-            buttonLabel="Remove from Favorites"
-          />
-        ))
-      )}
+      <div className="movies-grid">
+        {favourites.length === 0 ? (
+          <p>No favourites yet. Start adding some!</p>
+        ) : (
+          favourites.map((movie) => (
+            <MovieCard
+              key={movie.imdbID}
+              movie={movie}
+              onAddFavourite={removeFromFavourites}
+              buttonLabel="Remove from Favorites"
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 };
