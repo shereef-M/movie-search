@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
+import MovieCard from '../components/MovieCard';
 
 function Home() {
   // State variables
@@ -36,13 +37,10 @@ function Home() {
       {loading && <p>Loading...</p>}
 
       {!loading &&
-        movies.map((movie) => (
-          <div key={movie.imdbID}>
-            <h2>{movie.Title}</h2>
-          </div>
-        ))}
+        movies.map((movie) => <MovieCard key={movie.imdbID} movie={movie} />)}
     </div>
   );
 }
 
 export default Home;
+
